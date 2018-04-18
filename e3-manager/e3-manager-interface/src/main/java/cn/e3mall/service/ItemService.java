@@ -1,5 +1,6 @@
 package cn.e3mall.service;
 
+import cn.common.pojo.DataGridResult;
 import cn.e3mall.pojo.TbItem;
 
 /**
@@ -9,4 +10,5 @@ import cn.e3mall.pojo.TbItem;
 */
 public interface ItemService {
 	public TbItem selectItemById(long id) ;
+	public DataGridResult getDataGridResult(int page, int rows);
 }
