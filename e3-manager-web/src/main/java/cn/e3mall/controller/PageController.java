@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
 	
 	
-	@RequestMapping("/{path}")
+	@RequestMapping(value= {"/{path}","/rest/page/{path}"})
 	public String toPage(@PathVariable String path) {
 		return path;
 	}
+	
+	
 }

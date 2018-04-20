@@ -19,7 +19,8 @@ public class TbItem implements Serializable{
     private String image;
 
     private Long cid;
-
+    
+    //商品状态 1上架 2下架 0未知
     private Byte status;
 
     private Date created;
