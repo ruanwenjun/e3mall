@@ -52,7 +52,7 @@ public class ItemServiceImpl implements ItemService {
 		
 		//获得总数
 		List<TbItem> itemList = info.getList();
-		int size = (int) info.getTotal();
+		long size = info.getTotal();
 		//封装结果集
 		DataGridResult result = new DataGridResult();
 		result.setRows(itemList);

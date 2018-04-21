@@ -9,13 +9,13 @@ import java.util.List;
 */
 public class DataGridResult implements Serializable{
 	
-	private int total;
+	private long total;
 	private List rows;
-	public int getTotal() {
+	public long getTotal() {
 		return total;
 	}
-	public void setTotal(int total) {
-		this.total = total;
+	public void setTotal(Long total2) {
+		this.total = total2;
 	}
 	public List getRows() {
 		return rows;

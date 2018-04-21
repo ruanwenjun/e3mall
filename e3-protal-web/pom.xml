@@ -3,19 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.e3mall</groupId>
-		<artifactId>e3-manager</artifactId>
+		<artifactId>e3-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>e3-manager-web</artifactId>
+
+	<artifactId>e3-protal-web</artifactId>
 	<packaging>war</packaging>
+
 	<dependencies>
 
-		<dependency>
-			<groupId>cn.e3mall</groupId>
-			<artifactId>e3-manager-interface</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>cn.e3mall</groupId>
 			<artifactId>e3-content-interface</artifactId>
@@ -66,11 +62,7 @@
 			<artifactId>jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!-- 文件上传组件 -->
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-			</dependency>
+
 		<!-- dubbo相关 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -103,12 +95,11 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<port>8081</port>
+					<port>8082</port>
 					<path>/</path>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
