@@ -2,12 +2,18 @@ package cn.e3mall.content.service.impl;
 
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
+import cn.common.jedis.JedisClient;
 import cn.common.pojo.DataGridResult;
 import cn.common.pojo.E3Result;
+import cn.common.utils.JsonUtils;
 import cn.e3mall.content.service.ContentService;
 import cn.e3mall.dao.TbContentMapper;
 import cn.e3mall.pojo.TbContent;
@@ -23,6 +29,11 @@ import cn.e3mall.pojo.TbContentExample;
 public class ContentServiceImpl implements ContentService {
 	@Autowired
 	private TbContentMapper tbContentMapper;
+	@Autowired
+	private JedisClient jedisClient;
+	
+	@Value(value="${CONTENT_REDIS}")
+	private String CONTENT_REDIS;
 
 	// 分页查找
 	public DataGridResult pageQuery(Long categoryId, int page, int rows) {
@@ -50,22 +61,56 @@ public class ContentServiceImpl implements ContentService {
 		// 更新内容
 		content.setUpdated(new Date());
 		tbContentMapper.updateByPrimaryKey(content);
-		
+
+		// 清空redis缓存
+		try {
+			jedisClient.hdel(CONTENT_REDIS, content.getCategoryId().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return E3Result.ok();
 	}
-	
-	//新增内容
+
+	// 新增内容
 	public E3Result addContent(TbContent content) {
 		content.setUpdated(new Date());
 		tbContentMapper.insert(content);
+
+		// 清空redis缓存
+		try {
+			jedisClient.hdel(CONTENT_REDIS, content.getCategoryId().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return E3Result.ok();
 	}
-	
-	//根据分类ID查找内容
-	public List<TbContent> selectContentListByCategoryId(Long aD1_CATEGORY_ID) {
+
+	// 根据分类ID查找内容
+	public List<TbContent> selectContentListByCategoryId(Long categoryId) {
+		// 先查找缓存
+		try {
+			String content = jedisClient.hget(CONTENT_REDIS, categoryId.toString());
+			if (StringUtils.isNotBlank(content)) {
+				return JsonUtils.jsonToList(content, TbContent.class);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		TbContentExample example = new TbContentExample();
-		example.createCriteria().andCategoryIdEqualTo(aD1_CATEGORY_ID);
+		example.createCriteria().andCategoryIdEqualTo(categoryId);
 		List<TbContent> list = tbContentMapper.selectByExample(example);
+
+		// 将结果加入到缓存中
+		try {
+			String content = JsonUtils.objectToJson(list);
+			jedisClient.hset(CONTENT_REDIS, categoryId.toString(), content);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return list;
 	}
 
