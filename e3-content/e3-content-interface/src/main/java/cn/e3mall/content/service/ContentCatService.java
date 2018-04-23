@@ -2,8 +2,8 @@ package cn.e3mall.content.service;
 
 import java.util.List;
 
-import cn.common.pojo.E3Result;
-import cn.common.pojo.TreeNodeResult;
+import cn.e3mall.common.pojo.E3Result;
+import cn.e3mall.common.pojo.TreeNodeResult;
 
 /**
  * 首页内容分类Service

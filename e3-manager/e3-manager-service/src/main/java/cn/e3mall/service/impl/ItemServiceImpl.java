@@ -5,13 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-
-import cn.common.pojo.DataGridResult;
-import cn.common.pojo.E3Result;
-import cn.common.utils.IDUtils;
+import cn.e3mall.common.pojo.DataGridResult;
+import cn.e3mall.common.pojo.E3Result;
+import cn.e3mall.common.utils.IDUtils;
 import cn.e3mall.dao.TbItemDescMapper;
 import cn.e3mall.dao.TbItemMapper;
 import cn.e3mall.pojo.TbItem;

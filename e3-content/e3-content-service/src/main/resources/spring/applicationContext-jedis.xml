@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 	
 	<!--单机版redis  -->
-	<bean class="cn.common.jedis.JedisClientPool" id="jedisClient" >
+	<bean class="cn.e3mall.common.jedis.JedisClientPool" id="jedisClient" >
 		<property name="jedisPool" ref="jedisPool"/>
 	</bean>
 	

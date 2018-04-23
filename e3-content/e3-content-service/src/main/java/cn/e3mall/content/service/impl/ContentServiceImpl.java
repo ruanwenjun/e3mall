@@ -9,11 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-
-import cn.common.jedis.JedisClient;
-import cn.common.pojo.DataGridResult;
-import cn.common.pojo.E3Result;
-import cn.common.utils.JsonUtils;
+import cn.e3mall.common.jedis.JedisClient;
+import cn.e3mall.common.pojo.DataGridResult;
+import cn.e3mall.common.pojo.E3Result;
+import cn.e3mall.common.utils.JsonUtils;
 import cn.e3mall.content.service.ContentService;
 import cn.e3mall.dao.TbContentMapper;
 import cn.e3mall.pojo.TbContent;

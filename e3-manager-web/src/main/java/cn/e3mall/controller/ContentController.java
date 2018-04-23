@@ -1,21 +1,20 @@
 package cn.e3mall.controller;
-/**
- * 内容Controller
- * @author ruanwenjun 
- *		   E-mail:861923274@qq.com
- * @date 2018年4月20日 下午7:37:13
-*/
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import cn.common.pojo.DataGridResult;
-import cn.common.pojo.E3Result;
+import cn.e3mall.common.pojo.DataGridResult;
+import cn.e3mall.common.pojo.E3Result;
 import cn.e3mall.content.service.ContentService;
 import cn.e3mall.pojo.TbContent;
 
+/**
+ * 内容Controller
+ * @author ruanwenjun 
+ *		   E-mail:861923274@qq.com
+ * @date 2018年4月20日 下午7:37:13
+ */
 @Controller
 public class ContentController {
 	@Autowired

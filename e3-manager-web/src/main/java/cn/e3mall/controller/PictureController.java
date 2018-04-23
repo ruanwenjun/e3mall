@@ -1,9 +1,7 @@
 package cn.e3mall.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.common.utils.FastDFSClient;
-import cn.common.utils.JsonUtils;
+import cn.e3mall.common.utils.FastDFSClient;
+import cn.e3mall.common.utils.JsonUtils;
 
 /**
  * 图片controller
@@ -29,7 +27,7 @@ public class PictureController {
 	// 上传图片
 	@RequestMapping("/pic/upload")
 	public @ResponseBody String uploadPicture(MultipartFile uploadFile) {
-		Map map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		try {
 			// 获得文件字节数组
 			byte[] bytes = uploadFile.getBytes();

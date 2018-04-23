@@ -2,9 +2,10 @@ package cn.e3mall.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import cn.common.pojo.TreeNodeResult;
+import cn.e3mall.common.pojo.TreeNodeResult;
 import cn.e3mall.dao.TbItemCatMapper;
 import cn.e3mall.pojo.TbItemCat;
 import cn.e3mall.pojo.TbItemCatExample;

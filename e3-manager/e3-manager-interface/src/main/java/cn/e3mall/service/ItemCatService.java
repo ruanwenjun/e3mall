@@ -2,7 +2,8 @@ package cn.e3mall.service;
 
 import java.util.List;
 
-import cn.common.pojo.TreeNodeResult;
+import cn.e3mall.common.pojo.TreeNodeResult;
+
 
 /**
  * 商品目录服务

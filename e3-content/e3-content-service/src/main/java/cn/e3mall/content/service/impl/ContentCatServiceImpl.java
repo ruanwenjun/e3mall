@@ -3,12 +3,10 @@ package cn.e3mall.content.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import cn.common.pojo.E3Result;
-import cn.common.pojo.TreeNodeResult;
+import cn.e3mall.common.pojo.E3Result;
+import cn.e3mall.common.pojo.TreeNodeResult;
 import cn.e3mall.content.service.ContentCatService;
 import cn.e3mall.dao.TbContentCategoryMapper;
 import cn.e3mall.pojo.TbContentCategory;
