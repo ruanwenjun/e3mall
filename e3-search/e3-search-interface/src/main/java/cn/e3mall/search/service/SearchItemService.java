@@ -19,5 +19,5 @@ public interface SearchItemService {
 	 * @return
 	 */
 	 
-	SearchResult searchItemsByTitle(String title,int pageSize,int start) ;
+	SearchResult searchItemsByTitle(String title,int pageSize,int start) throws Exception;
 }

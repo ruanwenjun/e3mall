@@ -1,5 +1,10 @@
 package cn.e3mall.common.jedis;
 
+/**
+ * 
+ * @author RUANWENJUN
+ *
+ */
 public interface JedisClient {
 
 	String set(String key, String value);

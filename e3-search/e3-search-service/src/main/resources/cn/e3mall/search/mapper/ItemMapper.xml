@@ -7,8 +7,8 @@
 			i.title,
 			i.image,
 			i.price,
-			i.sell_point,
-			c.`name` AS category_name
+			i.sell_point AS sellPoint
+			c.`name` AS categoryName
 		FROM
 			tb_item i
 		INNER JOIN tb_item_cat c ON i.cid = c.id

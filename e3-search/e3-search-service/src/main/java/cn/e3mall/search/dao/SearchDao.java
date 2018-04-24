@@ -42,10 +42,10 @@ public class SearchDao {
 		for (SolrDocument solrDocument : results) {
 			SearchItem item = new SearchItem();
 			item.setId((String) solrDocument.getFieldValue("id"));
-			item.setCategory_name((String) solrDocument.getFieldValue("item_category_name"));
+			item.setCategoryName((String) solrDocument.getFieldValue("item_category_name"));
 			item.setImage((String) solrDocument.getFieldValue("item_image"));
 			item.setPrice((Long) solrDocument.getFieldValue("item_price"));
-			item.setSell_point((String) solrDocument.getFieldValue("item_sell_point"));
+			item.setSellPoint((String) solrDocument.getFieldValue("item_sell_point"));
 			// 封装商品title
 			Map<String, List<String>> map = highlighting.get(item.getId());
 			List<String> list = map.get("item_title");

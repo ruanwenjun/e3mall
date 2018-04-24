@@ -13,8 +13,8 @@ public class SearchItem implements Serializable{
 	private String id;
 	private String title;
 	private String image;
-	private String sell_point;
-	private String category_name;
+	private String sellPoint;
+	private String categoryName;
 	private Long price;
 	public String getId() {
 		return id;
@@ -34,17 +34,17 @@ public class SearchItem implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public String getSell_point() {
-		return sell_point;
+	public String getSellPoint() {
+		return sellPoint;
 	}
-	public void setSell_point(String sell_point) {
-		this.sell_point = sell_point;
+	public void setSellPoint(String sellPoint) {
+		this.sellPoint = sellPoint;
 	}
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public Long getPrice() {
 		return price;

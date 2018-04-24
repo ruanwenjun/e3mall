@@ -20,8 +20,13 @@
     	<property name="suffix" value=".jsp"></property>
     </bean>  
     
+    <!--配置全局异常  -->
+    <bean class="cn.e3mall.search.exception.GlobalExceptionHandler"/>
+    
     <!--扫描controller  -->  
     <context:component-scan base-package="cn.e3mall.search.controller"/>
+    
+    
     
     <!-- 引用dubbo服务 -->
 	<dubbo:application name="e3-search-web"/>

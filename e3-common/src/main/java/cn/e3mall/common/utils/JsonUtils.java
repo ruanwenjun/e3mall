@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * json工具类
+ * @author RUANWENJUN
+ *
  */
 public class JsonUtils {
 

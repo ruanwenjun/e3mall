@@ -1,7 +1,5 @@
 package cn.e3mall.search.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -27,7 +25,7 @@ public class SearchItemController {
 	private int SEARCH_PAGE_SIZE;
 	
 	@RequestMapping("search")
-	public String searchItem(String keyword,@RequestParam(defaultValue="1")int page,Model model) throws UnsupportedEncodingException {
+	public String searchItem(String keyword,@RequestParam(defaultValue="1")int page,Model model) throws Exception {
 		//解决关键字乱码
 		keyword = new String(keyword.getBytes("iso-8859-1"), "utf-8");
 		

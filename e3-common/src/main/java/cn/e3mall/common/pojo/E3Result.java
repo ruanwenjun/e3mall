@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 自定义响应结构
+ * @author RUANWENJUN
+ *
  */
 public class E3Result implements Serializable{
 
@@ -54,9 +56,6 @@ public class E3Result implements Serializable{
         this.data = data;
     }
 
-//    public Boolean isOK() {
-//        return this.status == 200;
-//    }
 
     public Integer getStatus() {
         return status;

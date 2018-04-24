@@ -1,7 +1,11 @@
 package cn.e3mall.common.jedis;
 
 import redis.clients.jedis.JedisCluster;
-
+/**
+ * 
+ * @author RUANWENJUN
+ *
+ */
 public class JedisClientCluster implements JedisClient {
 	
 	private JedisCluster jedisCluster;

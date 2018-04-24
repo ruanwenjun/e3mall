@@ -4,7 +4,11 @@ package cn.e3mall.common.jedis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-
+/**
+ * 
+ * @author RUANWENJUN
+ *
+ */
 public class JedisClientPool implements JedisClient {
 	
 	private JedisPool jedisPool;

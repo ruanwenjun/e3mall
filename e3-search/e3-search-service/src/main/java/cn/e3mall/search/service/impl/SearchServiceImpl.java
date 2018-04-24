@@ -36,10 +36,10 @@ public class SearchServiceImpl implements SearchService {
 				//封装文档对象
 				doc.addField("id",item.getId());
 				doc.addField("item_title",item.getTitle());
-				doc.addField("item_sell_point",item.getSell_point());
+				doc.addField("item_sell_point",item.getSellPoint());
 				doc.addField("item_price",item.getPrice());
 				doc.addField("item_image",item.getImage());
-				doc.addField("item_category_name",item.getCategory_name());
+				doc.addField("item_category_name",item.getCategoryName());
 				solrServer.add(doc);
 			}
 			solrServer.commit();
