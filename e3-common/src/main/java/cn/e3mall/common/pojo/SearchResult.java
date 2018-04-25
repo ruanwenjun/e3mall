@@ -11,11 +11,17 @@ import java.util.List;
  * @date 2018年4月22日 下午8:27:31
 */
 public class SearchResult implements Serializable{
-	//总数
+	/**
+	 * 总数
+	 */
 	private Long recourdCount;   
-	//商品查询到的列表
+	/**
+	 * 商品查询到的列表
+	 */
 	private List<SearchItem> itemList;  
-	//总页数
+	/**
+	 * 总页数
+	 */
 	private int totalPages;             
 	
 	public int getTotalPages() {

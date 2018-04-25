@@ -22,16 +22,18 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper mapper;
-	//根据父节点ID查询子节点列表
+	/**
+	 * 根据父节点ID查询子节点列表
+	 */
 	@Override
 	public List<TreeNodeResult> getItemCatList(long parentId) {
 		//根据父节点id查询目录列表
 		TbItemCatExample example = new TbItemCatExample();
 		example.createCriteria().andParentIdEqualTo(parentId);
-		List<TbItemCat> ItemList = mapper.selectByExample(example);
+		List<TbItemCat> itemList = mapper.selectByExample(example);
 		//封装返回的树节点列表
 		List<TreeNodeResult> result = new ArrayList<TreeNodeResult>();
-		for (TbItemCat itemCat : ItemList) {
+		for (TbItemCat itemCat : itemList) {
 			TreeNodeResult treeNode = new TreeNodeResult();
 			treeNode.setId(itemCat.getId());
 			treeNode.setText(itemCat.getName());

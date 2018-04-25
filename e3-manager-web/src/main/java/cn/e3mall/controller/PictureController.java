@@ -8,8 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import cn.e3mall.common.utils.FastDFSClient;
+import cn.e3mall.common.utils.FastDfsClient;
 import cn.e3mall.common.utils.JsonUtils;
 
 /**
@@ -35,7 +34,7 @@ public class PictureController {
 			// 获得扩展名
 			String extName = FilenameUtils.getExtension(name);
 			// 上传图片
-			FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
+			FastDfsClient fastDFSClient = new FastDfsClient("classpath:conf/client.conf");
 			String url = fastDFSClient.uploadFile(bytes, extName);
 
 			// 上传成功,将url拼装

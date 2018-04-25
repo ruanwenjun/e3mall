@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:property-placeholder location="classpath:conf/uploadPictureIp.properties"/>
-
+	
 
 	<!--扫描两大组件 -->
 	<mvc:annotation-driven />

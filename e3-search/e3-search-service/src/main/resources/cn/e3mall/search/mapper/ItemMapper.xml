@@ -7,12 +7,26 @@
 			i.title,
 			i.image,
 			i.price,
-			i.sell_point AS sellPoint
+			i.sell_point AS sellPoint,
 			c.`name` AS categoryName
 		FROM
 			tb_item i
 		INNER JOIN tb_item_cat c ON i.cid = c.id
 		WHERE
 			i. STATUS = '1';
+	</select>
+	<select id="selectItemById" resultType="cn.e3mall.common.pojo.SearchItem" parameterType="long">
+		SELECT
+			i.id,
+			i.title,
+			i.image,
+			i.price,
+			i.sell_point AS sellPoint,
+			c.`name` AS categoryName
+		FROM
+			tb_item i
+		INNER JOIN tb_item_cat c ON i.cid = c.id
+		WHERE
+			i. STATUS = '1' AND i.id = #{id};
 	</select>
 </mapper>

@@ -1,6 +1,15 @@
 package cn.e3mall.controller;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +21,7 @@ import cn.e3mall.pojo.TbItem;
 import cn.e3mall.service.ItemService;
 
 /**
- * 商品Controller
+ * 后台商品Controller
  * @author ruanwenjun 
  *		   E-mail:861923274@qq.com
  * @date 2018年4月16日 下午9:23:42
@@ -22,6 +31,10 @@ public class ItemController {
 
 	@Autowired
 	private ItemService itemService;
+	@Autowired
+	private JmsTemplate jmsTemplate;
+	@Resource
+	private Destination topicDestination;
 	
 	//根据ID查询商品
 	@RequestMapping("/rest/item/param/item/query/{id}")
@@ -40,7 +53,17 @@ public class ItemController {
 	//新增商品
 	@RequestMapping(value="/item/save",method=RequestMethod.POST)
 	public @ResponseBody E3Result addItem(TbItem item,String desc) {
+		//调用service方法添加商品到数据库
 		E3Result result = itemService.addNewItem(item, desc);
+		//得到商品ID
+		Long id = (Long) result.getData();
+		//将商品Id通过activemq以广播方式发送消息
+		jmsTemplate.send(topicDestination, new MessageCreator() {
+			public Message createMessage(Session session) throws JMSException {
+				TextMessage message = session.createTextMessage(id+"");
+				return message;
+			}
+		});
 		return result;
 	}
 	

@@ -5,13 +5,14 @@ import cn.e3mall.common.pojo.E3Result;
 import cn.e3mall.pojo.TbItem;
 
 /**
+ * 商品service
  * @author ruanwenjun 
  *		   E-mail:861923274@qq.com
  * @date 2018年4月16日 下午9:17:51
 */
 public interface ItemService {
 	
-	public E3Result selectItemById(long id) ;
+
 	
 	public DataGridResult getDataGridResult(int page, int rows);
 	
@@ -28,6 +29,12 @@ public interface ItemService {
 	 * @return
 	 */
 	public E3Result getItemDescById(Long id);
+	/**
+	 * 根据Id查询商品
+	 * @param id
+	 * @return
+	 */
+	public E3Result selectItemById(long id) ;
 	
 	/**
 	 * 更新商品

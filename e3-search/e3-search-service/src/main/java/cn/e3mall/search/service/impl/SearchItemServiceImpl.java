@@ -9,6 +9,7 @@ import cn.e3mall.search.dao.SearchDao;
 import cn.e3mall.search.service.SearchItemService;
 
 /**
+ * 前台商品查找Service
  * @author ruanwenjun E-mail:861923274@qq.com
  * @date 2018年4月22日 下午8:57:00
  */
@@ -16,7 +17,8 @@ import cn.e3mall.search.service.SearchItemService;
 public class SearchItemServiceImpl implements SearchItemService {
 	@Autowired
 	private SearchDao searchDao;
-
+	
+	//根据查找关键字分页查找商品列表
 	public SearchResult searchItemsByTitle(String title, int pageSize, int page) throws Exception{
 
 		// 封装查询对象

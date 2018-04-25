@@ -9,11 +9,17 @@ import java.io.Serializable;
  * @date 2018年4月18日 上午10:32:41
 */
 public class TreeNodeResult implements Serializable {
-	 //当前节点ID
+	 /**
+	  * 当前节点ID
+	  */
 	private Long id;        
-	//当前节点name
+	/**
+	 * 当前节点name
+	 */
 	private String text;     
-	//当前节点状态 closed open
+	/**
+	 * 当前节点状态 closed open
+	 */
 	private String state;    
 	public Long getId() {
 		return id;

@@ -11,16 +11,17 @@ import org.csource.fastdfs.TrackerServer;
  * @author RUANWENJUN
  *
  */
-public class FastDFSClient {
+public class FastDfsClient {
 
 	private TrackerClient trackerClient = null;
 	private TrackerServer trackerServer = null;
 	private StorageServer storageServer = null;
 	private StorageClient1 storageClient = null;
 	
-	public FastDFSClient(String conf) throws Exception {
-		if (conf.contains("classpath:")) {
-			conf = conf.replace("classpath:", this.getClass().getResource("/").getPath());
+	public FastDfsClient(String conf) throws Exception {
+		String classpath = "classpath:";
+		if (conf.contains(classpath)) {
+			conf = conf.replace(classpath, this.getClass().getResource("/").getPath());
 		}
 		ClientGlobal.init(conf);
 		trackerClient = new TrackerClient();
@@ -43,11 +44,22 @@ public class FastDFSClient {
 		String result = storageClient.upload_file1(fileName, extName, metas);
 		return result;
 	}
-	
+	/**
+	 * 上传文件方法
+	 * @param fileName
+	 * @return
+	 * @throws Exception
+	 */
 	public String uploadFile(String fileName) throws Exception {
 		return uploadFile(fileName, null, null);
 	}
-	
+	/**
+	 * 上传文件方法
+	 * @param fileName
+	 * @param extName
+	 * @return
+	 * @throws Exception
+	 */
 	public String uploadFile(String fileName, String extName) throws Exception {
 		return uploadFile(fileName, extName, null);
 	}
