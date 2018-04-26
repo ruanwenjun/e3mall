@@ -3,25 +3,29 @@
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 	
-	<!--扫描包  -->
-	<context:component-scan base-package="cn.e3mall.search.service,cn.e3mall.search.dao"/>
 	
-	<!-- 使用dubbo发布服务 -->
-	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<dubbo:application name="e3-search" />
-	<dubbo:registry protocol="zookeeper"
-		address="192.168.25.128:2181" />
-	<!-- 用dubbo协议在20882端口暴露服务 -->
-	<dubbo:protocol name="dubbo" port="20882" />
-	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="cn.e3mall.search.service.SearchService" ref="searchServiceImpl" timeout="600000" />
-	<dubbo:service interface="cn.e3mall.search.service.SearchItemService" ref="searchItemServiceImpl" timeout="600000" />
+	<context:property-placeholder location="classpath:mybatis/*.properties"/>
+	<!--连接池  -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
 	
+	<!--配置sqlSessionFactory  -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"></property>	
+	</bean>
+	
+	<!--扫描mapper  -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.e3mall.dao"></property>
+	</bean>
 </beans>
