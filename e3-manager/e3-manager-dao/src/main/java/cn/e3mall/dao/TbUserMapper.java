@@ -4,7 +4,11 @@ import cn.e3mall.pojo.TbUser;
 import cn.e3mall.pojo.TbUserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-
+/**
+ * UserDao
+ * @author RUANWENJUN
+ *
+ */
 public interface TbUserMapper {
     long countByExample(TbUserExample example);
 

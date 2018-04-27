@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TbUser implements Serializable{
+	//数据库中ID自增
     private Long id;
 
     private String username;
