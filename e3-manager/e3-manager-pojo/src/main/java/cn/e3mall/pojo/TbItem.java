@@ -78,7 +78,8 @@ public class TbItem implements Serializable{
     public String getImage() {
         return image;
     }
-
+    
+   
     public void setImage(String image) {
         this.image = image == null ? null : image.trim();
     }

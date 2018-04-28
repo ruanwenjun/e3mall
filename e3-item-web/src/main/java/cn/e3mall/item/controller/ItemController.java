@@ -26,10 +26,8 @@ public class ItemController {
 	@RequestMapping("item/{itemId}")
 	public String itemDetail(@PathVariable Long itemId,Model model) {
 		//根据ID查询商品
-		E3Result itemResult = itemService.selectItemById(itemId);
-		E3Result descResult = itemService.getItemDescById(itemId);
-		TbItem tbItem = (TbItem) itemResult.getData();
-		TbItemDesc itemDesc = (TbItemDesc) descResult.getData();
+		TbItem tbItem = itemService.selectItemById(itemId);
+		TbItemDesc itemDesc = itemService.getItemDescById(itemId);
 		//将商品包装
 		Item item = new Item(tbItem);
 		//添加到request域

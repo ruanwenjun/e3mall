@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.e3mall.common.pojo.DataGridResult;
 import cn.e3mall.common.pojo.E3Result;
 import cn.e3mall.pojo.TbItem;
+import cn.e3mall.pojo.TbItemDesc;
 import cn.e3mall.service.ItemService;
 
 /**
@@ -39,8 +40,9 @@ public class ItemController {
 	//根据ID查询商品
 	@RequestMapping("/rest/item/param/item/query/{id}")
 	public @ResponseBody E3Result item(@PathVariable Long id) {
-		E3Result item = itemService.selectItemById(id);
-		return item;
+		TbItem item = itemService.selectItemById(id);
+		E3Result e3Result = E3Result.ok(item);
+		return e3Result;
 	}
 	
 	//获得商品列表返回给数据表格
@@ -70,8 +72,9 @@ public class ItemController {
 	// 查询商品详情
 	@RequestMapping("/rest/item/query/item/desc/{id}")
 	public @ResponseBody E3Result getItemDescById(@PathVariable Long id) {
-		E3Result desc = itemService.getItemDescById(id);
-		return desc;
+		 TbItemDesc itemDesc = itemService.getItemDescById(id);
+		 E3Result e3Result = E3Result.ok(itemDesc);
+		return e3Result;
 	}
 	
 	//修改商品

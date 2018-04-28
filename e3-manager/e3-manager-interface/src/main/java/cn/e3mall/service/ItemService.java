@@ -3,6 +3,7 @@ package cn.e3mall.service;
 import cn.e3mall.common.pojo.DataGridResult;
 import cn.e3mall.common.pojo.E3Result;
 import cn.e3mall.pojo.TbItem;
+import cn.e3mall.pojo.TbItemDesc;
 
 /**
  * 商品service
@@ -28,13 +29,13 @@ public interface ItemService {
 	 * @param id
 	 * @return
 	 */
-	public E3Result getItemDescById(Long id);
+	public TbItemDesc getItemDescById(Long id);
 	/**
 	 * 根据Id查询商品
 	 * @param id
 	 * @return
 	 */
-	public E3Result selectItemById(long id) ;
+	public TbItem selectItemById(long id) ;
 	
 	/**
 	 * 更新商品

@@ -38,7 +38,7 @@ public class ItemServiceImpl implements ItemService {
 	 * 根据ID查询商品
 	 */
 	@Override
-	public E3Result selectItemById(long id) {
+	public TbItem selectItemById(long id) {
 		TbItem item = null;
 
 		// 先从缓存中查询
@@ -46,7 +46,7 @@ public class ItemServiceImpl implements ItemService {
 			String redisItem = jedisClient.get("ITEM_INFO:" + id + ":ITEM");
 			if (redisItem != null) {
 				item = JsonUtils.jsonToPojo(redisItem, TbItem.class);
-				return E3Result.ok(item);
+				return item;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class ItemServiceImpl implements ItemService {
 			e.printStackTrace();
 		}
 
-		return E3Result.ok(item);
+		return item;
 	}
 	/**
 	 * 分页查询商品
@@ -120,14 +120,14 @@ public class ItemServiceImpl implements ItemService {
 	 *  根据ID查询商品详情
 	 */
 	@Override
-	public E3Result getItemDescById(Long id) {
+	public TbItemDesc getItemDescById(Long id) {
 		TbItemDesc desc = null;
 		try {
 			// 先从缓存中查询
 			String redisDesc = jedisClient.get("ITEM_INFO:" + id + ":DESC");
 			if (redisDesc != null) {
 				desc = JsonUtils.jsonToPojo(redisDesc, TbItemDesc.class);
-				return E3Result.ok(desc);
+				return desc;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,7 +145,7 @@ public class ItemServiceImpl implements ItemService {
 			e.printStackTrace();
 		}
 
-		return E3Result.ok(desc);
+		return desc;
 	}
 
 	/**
