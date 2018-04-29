@@ -3,8 +3,10 @@ package cn.e3mall.sso.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,8 +32,11 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping("/page/login")
-	public String pageLogin() {
-
+	public String pageLogin(String redirect,Model model) {
+		//判断是否有转发的路径
+		if(StringUtils.isNotBlank(redirect)) {
+			model.addAttribute("redirect", redirect);
+		}
 		return "login";
 	}
 

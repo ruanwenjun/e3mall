@@ -25,8 +25,6 @@
     <mvc:resources location="/images/" mapping="/images/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
     
-    
-    
     <!--扫描controller  -->  
     <context:component-scan base-package="cn.e3mall.sso.controller"/>
     

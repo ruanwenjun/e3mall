@@ -26,9 +26,9 @@ public class TokenServiceImpl implements TokenService {
 	public E3Result findUserByToken(String token) {
 		//判断token是否为空
 		if(StringUtils.isBlank(token)) {
-			return E3Result.build(204, "用户登陆已过期，请重新登陆");
+			return E3Result.build(204, "用户未登录");
 		}
-		//查询用户信息
+		//从redis中查询用户信息
 		String userInfo = jedisClient.get("USER_SESSION:"+token);
 		TbUser user = JsonUtils.jsonToPojo(userInfo, TbUser.class);
 		//用户信息已经失效
